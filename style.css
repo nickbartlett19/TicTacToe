@@ -1,0 +1,21 @@
+body {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.header {
+    background-color: white;
+    width: 750px;
+    height: auto;
+    margin-bottom: 100px;
+}
+
+.game-board {
+    background-color: white;
+    height: 750px;
+    width: 750px;
+}
