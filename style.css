@@ -7,15 +7,56 @@ body {
 }
 
 
-.header {
+.new-game-button {
     background-color: white;
-    width: 750px;
+    width: auto;
     height: auto;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.choose-button {
+    background-color: white;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 5px;
+    width: auto;
+}
+
+.x-button, .o-button, .p1-choose-button {
+    height: 125px;
+    width: 125px;
 }
 
 .game-board {
     background-color: white;
     height: 750px;
     width: 750px;
+    display: flex;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-tile {
+    height: 250px;
+    width: 250px;
+}
+
+.game-tile:hover {
+    background-color: gray;
 }
