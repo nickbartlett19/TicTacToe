@@ -57,6 +57,6 @@ body {
     width: 250px;
 }
 
-.game-tile:hover {
+.game-tile:hover, .x-button:hover, .o-button:hover {
     background-color: gray;
 }
