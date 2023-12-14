@@ -14,7 +14,7 @@
 
 // Additional features of this program:
 
-// - 
+// - tracks score (wins, losses, draws of either player)
 
 // How this program is structured: 
 
@@ -35,7 +35,28 @@ class TicTacToe {
     }
 
     placeMove(gameTile) {
-        gameTile.innerText = this.choice;
+
+        // check gameTile has no children (empty)
+        if (gameTile.firstChild) {
+            return;
+        }
+
+        switch(this.choice) {
+            case "x":
+                var newTile = xTile.cloneNode();
+                gameTile.append(newTile);
+                // gameTile.appendChild(xTile);
+                break;
+            case "o":
+                var newTile = oTile.cloneNode();
+                gameTile.append(newTile);
+                break;
+            default:
+                console.log("error");
+                break;
+        }
+
+        // gameTile.innerText = this.choice;
         // console.log(gameTiles);
         // gameTiles.innerHTML = this.p1choice;
     }
@@ -45,12 +66,23 @@ class TicTacToe {
         chooseBtn.style.display = "none";
     }
 
+    boardClear() {
+        // code goes here
+    }
+
 }
 
 const chooseBtn = document.querySelector(".choose-button");
 const xBtn = document.querySelector(".x-button");
 const oBtn = document.querySelector(".o-button");
 const gameTiles = document.querySelectorAll(".game-tile");
+
+const xTile = document.createElement("img");
+xTile.src = "img/X.png";
+const oTile = document.createElement("img");
+oTile.src = "img/O.png";
+
+
 
 const myGame = new TicTacToe("x");
 
@@ -62,8 +94,9 @@ oBtn.addEventListener('click', (e) => {
     myGame.choose("o");
 });
 
-gameTiles.forEach(button => {
-    button.addEventListener('click', () => {
-        myGame.placeMove(button);
+gameTiles.forEach(gameTile => {
+    gameTile.addEventListener('click', () => {
+        myGame.placeMove(gameTile);
     })
 })
+
