@@ -6,7 +6,6 @@ body {
     flex-direction: column;
 }
 
-
 .new-game-button {
     background-color: white;
     width: auto;
@@ -55,6 +54,9 @@ body {
 .game-tile {
     height: 250px;
     width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .game-tile:hover, .x-button:hover, .o-button:hover {
