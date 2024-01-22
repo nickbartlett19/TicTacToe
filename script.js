@@ -34,18 +34,29 @@ class TicTacToe {
         // code goes here
     }
 
+    swapChoice() {
+        if (this.choice === "x") {
+            this.choice = "o"
+        }
+        else if (this.choice === "o") {
+            this.choice = "x"
+        }
+        else {
+            return;
+        }
+    }
+
     placeMove(gameTile) {
 
         // check gameTile has no children (empty)
         if (gameTile.firstChild) {
             return;
         }
-
+        
         switch(this.choice) {
             case "x":
                 var newTile = xTile.cloneNode();
                 gameTile.append(newTile);
-                // gameTile.appendChild(xTile);
                 break;
             case "o":
                 var newTile = oTile.cloneNode();
@@ -56,9 +67,8 @@ class TicTacToe {
                 break;
         }
 
-        // gameTile.innerText = this.choice;
-        // console.log(gameTiles);
-        // gameTiles.innerHTML = this.p1choice;
+        this.swapChoice();
+
     }
 
     choose(piece) {
@@ -69,7 +79,6 @@ class TicTacToe {
     boardClear() {
         // code goes here
     }
-
 }
 
 const chooseBtn = document.querySelector(".choose-button");
@@ -82,9 +91,7 @@ xTile.src = "img/X.png";
 const oTile = document.createElement("img");
 oTile.src = "img/O.png";
 
-
-
-const myGame = new TicTacToe("x");
+const myGame = new TicTacToe();
 
 xBtn.addEventListener('click', (e) => {
     myGame.choose("x");
@@ -99,4 +106,3 @@ gameTiles.forEach(gameTile => {
         myGame.placeMove(gameTile);
     })
 })
-
