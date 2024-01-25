@@ -21,16 +21,24 @@
 // - TicTacToe object is defined 
 
 
+console.log(math.sqrt(4));
+
+
 class TicTacToe {
     constructor() {
         this.choice;
+        this.xBoard = [
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ];
     }
 
     newGame() {
         // code goes here
     }
 
-    winCheck() {
+    checkWin() {
         // code goes here
     }
 
@@ -56,11 +64,14 @@ class TicTacToe {
         switch(this.choice) {
             case "x":
                 var newTile = xTile.cloneNode();
+                // gameTile.innerHTML = "";
                 gameTile.append(newTile);
+                console.log(gameTile.id)
                 break;
             case "o":
                 var newTile = oTile.cloneNode();
                 gameTile.append(newTile);
+                console.log(gameTile.id)
                 break;
             default:
                 console.log("error");
@@ -79,7 +90,34 @@ class TicTacToe {
     boardClear() {
         // code goes here
     }
+
+    idDictionary(id, xBoard) {
+        switch (id){
+            case 1:
+            
+            
+        }
+    }
 }
+
+// var xBoard = math.matrix([
+//     [1,0,0],
+//     [0,0,0],
+//     [0,0,0]
+// ]);
+
+// console.log(typeof(xBoard)); 
+// console.log(xBoard[0,0]);
+
+var xBoard = [
+    [0,0,0],
+    [0,0,0],
+    [0,0,0]
+];
+
+// console.log(typeof(xBoard)); 
+// console.log(xBoard[0][0]);
+
 
 const chooseBtn = document.querySelector(".choose-button");
 const xBtn = document.querySelector(".x-button");
