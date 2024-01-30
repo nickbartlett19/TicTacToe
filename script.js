@@ -21,17 +21,53 @@
 // - TicTacToe object is defined 
 
 
-console.log(math.sqrt(4));
-
+// console.log(math.sqrt(4));
 
 class TicTacToe {
     constructor() {
         this.choice;
+
         this.xBoard = [
             [0,0,0],
             [0,0,0],
             [0,0,0]
         ];
+
+        this.oBoard = [
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ];
+
+        this.magicSquareVals = {
+            1: 8,
+            2: 3,
+            3: 4,
+            4: 1,
+            5: 5,
+            6: 9,
+            7: 6,
+            8: 7,
+            9: 2
+        }
+
+        this.boardIndices = {
+            1: [0,0],
+            2: [1,0],
+            3: [2,0],
+            4: [0,1],
+            5: [1,1],
+            6: [2,1],
+            7: [0,2],
+            8: [1,2],
+            9: [2,2]
+        }
+        
+        // console.log(typeof(this.magicSquareVals[1]))
+
+        // for (let i = 1; i < 10; i++) {
+        //     console.log(this.magicSquareVals[i]);
+        // }
     }
 
     newGame() {
@@ -39,7 +75,39 @@ class TicTacToe {
     }
 
     checkWin() {
-        // code goes here
+        // check if x wins
+        let boardMatrix = math.matrix(this.xBoard);
+        let rotationMatrix = math.matrix([[0,0,1],[0, 1, 0],[1, 0, 0]]);
+        let rotatedBoardMatrix = math.multiply(boardMatrix,rotationMatrix);
+
+        // console.log(rotationMatrix);
+        // console.log(boardMatrix);
+        console.log(rotatedBoardMatrix);
+        let secondaryDiag = math.sum(math.diag(rotatedBoardMatrix));
+
+        // check main diag
+        if (math.sum(math.diag(boardMatrix)) === 15) {
+            console.log("whats the dealoio?")
+            return true;
+        }
+        // check other diag
+        else if (secondaryDiag === 15) {
+            console.log("whats the dealio?")
+            return true;
+        }
+
+        // check col 1
+        // check col 2
+        // check col 3
+
+        // check row 1
+        // check row 2
+        // check row 3
+
+        else {
+            return false;
+        }
+        
     }
 
     swapChoice() {
@@ -60,22 +128,27 @@ class TicTacToe {
         if (gameTile.firstChild) {
             return;
         }
-        
+                
         switch(this.choice) {
             case "x":
                 var newTile = xTile.cloneNode();
-                // gameTile.innerHTML = "";
                 gameTile.append(newTile);
-                console.log(gameTile.id)
+                // console.log(gameTile.id);
+                this.updateMagicSquare(gameTile.id, "x")
+                this.printXBoard();
+                console.log("checkwin:", this.checkWin());
                 break;
             case "o":
                 var newTile = oTile.cloneNode();
                 gameTile.append(newTile);
-                console.log(gameTile.id)
+                // console.log(gameTile.id);
+                this.updateMagicSquare(gameTile.id, "o")
+                this.printOBoard();
                 break;
             default:
-                console.log("error");
-                break;
+                // console.log("error");
+                // console.log(gameTile.id)
+                return;
         }
 
         this.swapChoice();
@@ -91,13 +164,41 @@ class TicTacToe {
         // code goes here
     }
 
-    idDictionary(id, xBoard) {
-        switch (id){
-            case 1:
-            
-            
+    updateMagicSquare(id, selector) {
+        const i = this.boardIndices[id]; // index of xBoardArray
+
+        if (selector === "x") {
+            this.xBoard[i[0]][i[1]] = this.magicSquareVals[id];
         }
+        else if (selector === "o") {
+            this.oBoard[i[0]][i[1]] = this.magicSquareVals[id];
+        }
+        else {
+            return;
+        }
+
     }
+
+
+    // combine later
+    printXBoard() {
+        console.log("----")
+        console.log("x")
+        for (let i = 0; i < 3; i++) {
+            console.log(this.xBoard[i]);
+        }
+        console.log("----")
+    }
+
+    printOBoard() {
+        console.log("----")
+        console.log("o")
+        for (let i = 0; i < 3; i++) {
+            console.log(this.oBoard[i]);
+        }
+        console.log("----")
+    }
+
 }
 
 // var xBoard = math.matrix([
@@ -109,14 +210,17 @@ class TicTacToe {
 // console.log(typeof(xBoard)); 
 // console.log(xBoard[0,0]);
 
-var xBoard = [
-    [0,0,0],
-    [0,0,0],
-    [0,0,0]
-];
+// var xBoard = [
+//     [1,2,3],
+//     [0,0,0],
+//     [0,0,0]
+// ];
 
 // console.log(typeof(xBoard)); 
 // console.log(xBoard[0][0]);
+// console.log(xBoard[1][0]);
+// console.log(xBoard[2][0]);
+
 
 
 const chooseBtn = document.querySelector(".choose-button");
