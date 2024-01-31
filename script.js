@@ -74,15 +74,25 @@ class TicTacToe {
         // code goes here
     }
 
-    checkWin() {
-        // check if x wins
-        let boardMatrix = math.matrix(this.xBoard);
+    checkWin(input) {
+        let boardMatrix;
+
+        if (input = "x") {
+            boardMatrix = math.matrix(this.xBoard);
+        }
+        else if (input = "o") {
+            boardMatrix = math.matrix(this.oBoard);
+        }
+        else {
+            return;
+        }
+
         let rotationMatrix = math.matrix([[0,0,1],[0, 1, 0],[1, 0, 0]]);
         let rotatedBoardMatrix = math.multiply(boardMatrix,rotationMatrix);
 
         // console.log(rotationMatrix);
         // console.log(boardMatrix);
-        console.log(rotatedBoardMatrix);
+        // console.log(rotatedBoardMatrix);
         let secondaryDiag = math.sum(math.diag(rotatedBoardMatrix));
 
         // check main diag
@@ -95,14 +105,31 @@ class TicTacToe {
             console.log("whats the dealio?")
             return true;
         }
-
         // check col 1
+        else if (math.sum(math.column(boardMatrix,0)) === 15) {
+            return true;
+        } 
         // check col 2
+        else if (math.sum(math.column(boardMatrix,1)) === 15) {
+            return true;
+        } 
         // check col 3
+        else if (math.sum(math.column(boardMatrix,2)) === 15) {
+            return true;
+        }
 
         // check row 1
+        else if (math.sum(math.row(boardMatrix,0)) === 15) {
+            return true;
+        }
         // check row 2
+        else if (math.sum(math.row(boardMatrix,1)) === 15) {
+            return true;
+        }
         // check row 3
+        else if (math.sum(math.row(boardMatrix,2)) === 15) {
+            return true;
+        }
 
         else {
             return false;
@@ -133,17 +160,14 @@ class TicTacToe {
             case "x":
                 var newTile = xTile.cloneNode();
                 gameTile.append(newTile);
-                // console.log(gameTile.id);
                 this.updateMagicSquare(gameTile.id, "x")
-                this.printXBoard();
-                console.log("checkwin:", this.checkWin());
+                console.log("checkwin:", this.checkWin("x"));
                 break;
             case "o":
                 var newTile = oTile.cloneNode();
                 gameTile.append(newTile);
-                // console.log(gameTile.id);
-                this.updateMagicSquare(gameTile.id, "o")
-                this.printOBoard();
+                this.updateMagicSquare(gameTile.id, "o");
+                console.log("checkwin:", this.checkWin("o"));
                 break;
             default:
                 // console.log("error");
@@ -178,7 +202,6 @@ class TicTacToe {
         }
 
     }
-
 
     // combine later
     printXBoard() {
