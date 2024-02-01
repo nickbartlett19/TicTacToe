@@ -20,25 +20,19 @@
 
 // - TicTacToe object is defined 
 
-
-// console.log(math.sqrt(4));
-
 class TicTacToe {
     constructor() {
         this.choice;
-
         this.xBoard = [
             [0,0,0],
             [0,0,0],
             [0,0,0]
         ];
-
         this.oBoard = [
             [0,0,0],
             [0,0,0],
             [0,0,0]
         ];
-
         this.magicSquareVals = {
             1: 8,
             2: 3,
@@ -50,7 +44,6 @@ class TicTacToe {
             8: 7,
             9: 2
         }
-
         this.boardIndices = {
             1: [0,0],
             2: [1,0],
@@ -70,6 +63,11 @@ class TicTacToe {
         // }
     }
 
+    // main control function
+    playTurn() {
+
+    }
+
     newGame() {
         // code goes here
     }
@@ -77,32 +75,29 @@ class TicTacToe {
     checkWin(input) {
         let boardMatrix;
 
-        if (input = "x") {
+        // determine x or o won
+        if (input === "x") {
             boardMatrix = math.matrix(this.xBoard);
         }
-        else if (input = "o") {
+        else if (input === "o") {
             boardMatrix = math.matrix(this.oBoard);
         }
         else {
+            console.log("checkWin() error: bad input");
             return;
         }
 
+        // rotates the matrix pi/4 (180) to get the other diagonal
         let rotationMatrix = math.matrix([[0,0,1],[0, 1, 0],[1, 0, 0]]);
         let rotatedBoardMatrix = math.multiply(boardMatrix,rotationMatrix);
-
-        // console.log(rotationMatrix);
-        // console.log(boardMatrix);
-        // console.log(rotatedBoardMatrix);
         let secondaryDiag = math.sum(math.diag(rotatedBoardMatrix));
 
         // check main diag
         if (math.sum(math.diag(boardMatrix)) === 15) {
-            console.log("whats the dealoio?")
             return true;
         }
         // check other diag
         else if (secondaryDiag === 15) {
-            console.log("whats the dealio?")
             return true;
         }
         // check col 1
@@ -117,7 +112,6 @@ class TicTacToe {
         else if (math.sum(math.column(boardMatrix,2)) === 15) {
             return true;
         }
-
         // check row 1
         else if (math.sum(math.row(boardMatrix,0)) === 15) {
             return true;
@@ -130,11 +124,9 @@ class TicTacToe {
         else if (math.sum(math.row(boardMatrix,2)) === 15) {
             return true;
         }
-
         else {
             return false;
         }
-        
     }
 
     swapChoice() {
@@ -189,7 +181,7 @@ class TicTacToe {
     }
 
     updateMagicSquare(id, selector) {
-        const i = this.boardIndices[id]; // index of xBoardArray
+        const i = this.boardIndices[id]; // translates id to indices of x or oBoard
 
         if (selector === "x") {
             this.xBoard[i[0]][i[1]] = this.magicSquareVals[id];
@@ -198,9 +190,8 @@ class TicTacToe {
             this.oBoard[i[0]][i[1]] = this.magicSquareVals[id];
         }
         else {
-            return;
+            console.log("updateMagicSquare() error");
         }
-
     }
 
     // combine later
@@ -243,8 +234,6 @@ class TicTacToe {
 // console.log(xBoard[0][0]);
 // console.log(xBoard[1][0]);
 // console.log(xBoard[2][0]);
-
-
 
 const chooseBtn = document.querySelector(".choose-button");
 const xBtn = document.querySelector(".x-button");
