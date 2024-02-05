@@ -23,6 +23,8 @@
 class TicTacToe {
     constructor() {
         this.choice;
+        this.xWins = 0;
+        this.oWins = 0;
         this.xBoard = [
             [0,0,0],
             [0,0,0],
@@ -55,16 +57,31 @@ class TicTacToe {
             8: [1,2],
             9: [2,2]
         }
-        
-        // console.log(typeof(this.magicSquareVals[1]))
-
-        // for (let i = 1; i < 10; i++) {
-        //     console.log(this.magicSquareVals[i]);
-        // }
     }
 
     // main control function
-    playTurn() {
+    playTurn(gameTile) {
+
+        if (this.checkWin("x") === true) {
+            alert("x wins!")
+            if (this.p1choice === "x") {
+                this.xwins++;
+            }
+            else {
+                this.owins++;
+            }
+        }
+
+        else if (this.checkWin("o") === true) {
+            alert("o wins!")
+            if (this.p1choice === "o") {
+                this.p1wins++;
+            }
+            else {
+                this.p2wins++;
+            }
+        }
+
 
     }
 
@@ -147,23 +164,20 @@ class TicTacToe {
         if (gameTile.firstChild) {
             return;
         }
-                
+        
+        // clone the xTile element and append it to the gameTile, then update magic square
         switch(this.choice) {
             case "x":
                 var newTile = xTile.cloneNode();
                 gameTile.append(newTile);
                 this.updateMagicSquare(gameTile.id, "x")
-                console.log("checkwin:", this.checkWin("x"));
                 break;
             case "o":
                 var newTile = oTile.cloneNode();
                 gameTile.append(newTile);
                 this.updateMagicSquare(gameTile.id, "o");
-                console.log("checkwin:", this.checkWin("o"));
                 break;
             default:
-                // console.log("error");
-                // console.log(gameTile.id)
                 return;
         }
 
@@ -173,11 +187,16 @@ class TicTacToe {
 
     choose(piece) {
         this.choice = piece;
+        this.p1choice = this.choice;
         chooseBtn.style.display = "none";
     }
 
-    boardClear() {
-        // code goes here
+    clearBoard(gameTiles) {
+        // console.log(gameTiles);
+        // console.log(typeof(gameTiles));
+        gameTiles.forEach((element) => element.removeChild(element.firstChild));
+        // gameTiles.forEach((element) => console.log(element.firstChild, typeof(element.firstChild)));
+
     }
 
     updateMagicSquare(id, selector) {
@@ -238,6 +257,7 @@ class TicTacToe {
 const chooseBtn = document.querySelector(".choose-button");
 const xBtn = document.querySelector(".x-button");
 const oBtn = document.querySelector(".o-button");
+const newGameBtn = document.querySelector(".new-game-button")
 const gameTiles = document.querySelectorAll(".game-tile");
 
 const xTile = document.createElement("img");
@@ -255,8 +275,14 @@ oBtn.addEventListener('click', (e) => {
     myGame.choose("o");
 });
 
+newGameBtn.addEventListener('click', (e) => {
+    myGame.clearBoard(gameTiles);
+});
+
 gameTiles.forEach(gameTile => {
     gameTile.addEventListener('click', () => {
         myGame.placeMove(gameTile);
+        myGame.playTurn(gameTile);
+
     })
-})
+});

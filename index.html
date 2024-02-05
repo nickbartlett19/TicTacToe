@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicTacToe</title>
     <link rel="stylesheet" href = "style.css">
-    <script src = "script.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjs@12.3.0/lib/browser/math.min.js"></script>
-    <!-- <script type = "text/javascript">
-        console.log(math.sqrt(4).toString());
-    </script> -->
 </head>
 <body>
     <div class="new-game-button">
         new game
     </div>
+    <!-- <div class="win-counter">
+        <p>X wins: <span id = "xWins"></span></p>
+        <p>O wins: <span id = "oWins"></span></p>
+    </div> -->
     <div class="choose-button flex-row" choose-button>
         <div class = "p1-choose-button flex-center">p1 choose: </div>
         <div class="x-button flex-center">X</div>
@@ -37,5 +36,8 @@
             <div class="game-tile" id = "9"></div>
         </div>
     </div>
+
+    <script src = "script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@12.3.0/lib/browser/math.min.js"></script>
 </body>
 </html>

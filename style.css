@@ -15,6 +15,15 @@ body {
     padding: 5px;
 }
 
+.win-counter {
+    background-color: white;
+    width: auto;
+    height: auto;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 5px;
+}
+
 .choose-button {
     background-color: white;
     margin-bottom: 10px;
