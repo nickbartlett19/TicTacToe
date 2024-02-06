@@ -173,12 +173,13 @@ class TicTacToe {
         chooseBtn.style.display = "none";
     }
 
-    clearBoard(gameTiles) {
-        // console.log(gameTiles);
-        // console.log(typeof(gameTiles));
-        gameTiles.forEach((element) => element.removeChild(element.firstChild));
-        // gameTiles.forEach((element) => console.log(element.firstChild, typeof(element.firstChild)));
-
+    clearBoard() {
+        // iterate through gameTiles, remove children if they exist
+        for (let i = 0; i < gameTiles.length; i++) {
+            if (gameTiles[i].firstChild) {
+                gameTiles[i].removeChild(gameTiles[i].firstChild);
+            }
+        }
     }
 
     updateMagicSquare(id, selector) {
@@ -258,7 +259,7 @@ oBtn.addEventListener('click', (e) => {
 });
 
 newGameBtn.addEventListener('click', (e) => {
-    myGame.clearBoard(gameTiles);
+    myGame.clearBoard();
 });
 
 gameTiles.forEach(gameTile => {
