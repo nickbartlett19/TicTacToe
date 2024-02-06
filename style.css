@@ -2,23 +2,23 @@ body {
     background-color: black;
     display: flex;
     align-items: center;
+    height: 99vh;
     justify-content: center;
-    flex-direction: column;
+    margin: 0px;
+}
+
+/* control panel divs  */
+
+.control-panel {
+    background-color:gray;
+    height: 600px;
+    margin: 5px;
+    /* display: flex; */
 }
 
 .new-game-button {
     background-color: white;
-    width: auto;
-    height: auto;
-    margin-bottom: 10px;
-    font-size: 20px;
-    padding: 5px;
-}
-
-.win-counter {
-    background-color: white;
-    width: auto;
-    height: auto;
+    text-align: center;
     margin-bottom: 10px;
     font-size: 20px;
     padding: 5px;
@@ -37,12 +37,17 @@ body {
     width: 125px;
 }
 
+/* game board divs */
+
 .game-board {
     background-color: white;
-    height: 750px;
-    width: 750px;
+    height: 600px;
+    width: 600px;
+    margin: 5px;
+
     display: flex;
 }
+
 
 .flex-row {
     display: flex;
@@ -61,8 +66,8 @@ body {
 }
 
 .game-tile {
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
