@@ -23,8 +23,6 @@
 class TicTacToe {
     constructor() {
         this.choice;
-        this.xWins = 0;
-        this.oWins = 0;
         this.xBoard = [
             [0,0,0],
             [0,0,0],
@@ -45,7 +43,7 @@ class TicTacToe {
             7: 6,
             8: 7,
             9: 2
-        }
+        };
         this.boardIndices = {
             1: [0,0],
             2: [1,0],
@@ -56,33 +54,17 @@ class TicTacToe {
             7: [0,2],
             8: [1,2],
             9: [2,2]
-        }
+        };
     }
 
     // main control function
     playTurn(gameTile) {
-
         if (this.checkWin("x") === true) {
             alert("x wins!")
-            if (this.p1choice === "x") {
-                this.xwins++;
-            }
-            else {
-                this.owins++;
-            }
         }
-
         else if (this.checkWin("o") === true) {
             alert("o wins!")
-            if (this.p1choice === "o") {
-                this.p1wins++;
-            }
-            else {
-                this.p2wins++;
-            }
         }
-
-
     }
 
     newGame() {
