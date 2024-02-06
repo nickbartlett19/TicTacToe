@@ -14,11 +14,13 @@
 
 // Additional features of this program:
 
-// - tracks score (wins, losses, draws of either player)
+// - tracks score (wins, losses, draws of either player) (to be implemented)
 
-// How this program is structured: 
+// How this program is designed: 
 
-// - TicTacToe object is defined 
+// - Game functions are defined in the TicTacToe object
+// - board is represented by a 2d array, a magic square is then used to track if a player has
+// won based on the property that any row, column, or diagonal sums to the same number
 
 class TicTacToe {
     constructor() {
@@ -170,7 +172,7 @@ class TicTacToe {
     choose(piece) {
         this.choice = piece;
         this.p1choice = this.choice;
-        chooseBtn.style.display = "none";
+        // chooseBtn.style.display = "none";
     }
 
     clearBoard() {
