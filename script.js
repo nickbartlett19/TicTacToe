@@ -106,6 +106,34 @@ class TicTacToe {
         }
     }
 
+    placeMove(gameTile) {
+
+        // check gameTile has no children (empty)
+        if (gameTile.firstChild) {
+            return;
+        }
+        
+        // clone the xTile element and append it to the gameTile, then update magic square
+        switch(this.choice) {
+            case "x":
+                let newXTile = xTile.cloneNode();
+                gameTile.append(newXTile);
+                this.updateMagicSquare(gameTile.id, "x")
+                break;
+            case "o":
+                let newOTile = oTile.cloneNode();
+                gameTile.append(newOTile);
+                this.updateMagicSquare(gameTile.id, "o");
+                break;
+            default:
+                return;
+        }
+
+        this.swapChoice();
+        this.updateCurrentChoice();
+
+    }
+
     swapChoice() {
         if (this.choice === "x") {
             this.choice = "o"
@@ -118,36 +146,31 @@ class TicTacToe {
         }
     }
 
-    placeMove(gameTile) {
-
-        // check gameTile has no children (empty)
-        if (gameTile.firstChild) {
-            return;
+    updateCurrentChoice() {
+        if (currentChoiceTile.firstChild) {
+            currentChoiceTile.removeChild(currentChoiceTile.firstChild);
         }
-        
-        // clone the xTile element and append it to the gameTile, then update magic square
+
         switch(this.choice) {
-            case "x":
-                var newTile = xTile.cloneNode();
-                gameTile.append(newTile);
-                this.updateMagicSquare(gameTile.id, "x")
+            case("x"):
+                let newXTile = xTile.cloneNode();
+                currentChoiceTile.append(newXTile);
                 break;
-            case "o":
-                var newTile = oTile.cloneNode();
-                gameTile.append(newTile);
-                this.updateMagicSquare(gameTile.id, "o");
+            case("o"):
+                let newOTile = oTile.cloneNode();
+                currentChoiceTile.append(newOTile);
                 break;
             default:
                 return;
         }
-
-        this.swapChoice();
-
     }
 
     choose(piece) {
         this.choice = piece;
         this.p1choice = this.choice;
+
+        this.updateCurrentChoice();
+
         // chooseBtn.style.display = "none";
     }
 
@@ -158,6 +181,8 @@ class TicTacToe {
                 gameTiles[i].removeChild(gameTiles[i].firstChild);
             }
         }
+
+        currentChoiceTile.removeChild(currentChoiceTile.firstChild);
 
         // reset boards
         this.xBoard = [
@@ -212,6 +237,8 @@ const xBtn = document.querySelector(".x-button");
 const oBtn = document.querySelector(".o-button");
 const newGameBtn = document.querySelector(".new-game-button")
 const gameTiles = document.querySelectorAll(".game-tile");
+const currentChoiceTile = document.querySelector(".game-tile-head");
+
 
 const xTile = document.createElement("img");
 xTile.src = "img/X.png";

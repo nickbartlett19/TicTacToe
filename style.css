@@ -86,11 +86,18 @@ body {
     height: 100px;
     width: 100px;
 
-    height: 200px;
-    width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    padding: 5px;
+}
+
+img {
+    max-width: 100%;
 }
 
 .game-tile:hover, .x-button:hover, .o-button:hover {
