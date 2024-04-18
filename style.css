@@ -7,7 +7,7 @@ body {
     margin: 0px;
 }
 
-/* control panel divs  */
+/* control panel  */
 
 .control-panel {
     background-color:gray;
@@ -37,17 +37,26 @@ body {
     width: 125px;
 }
 
-/* game board divs */
+/* game board */
 
 .game-board {
     background-color: white;
-    height: 600px;
+    /* height: px; */
     width: 600px;
     margin: 5px;
 
-    display: flex;
+    /* display: flex; */
 }
 
+.game-board-top {
+    background-color: white;
+    height: 200px;
+    width: 600px;
+}
+
+.tile-grid {
+    display: flex;
+}
 
 .flex-row {
     display: flex;
@@ -66,6 +75,17 @@ body {
 }
 
 .game-tile {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-tile-head {
+    height: 100px;
+    width: 100px;
+
     height: 200px;
     width: 200px;
     display: flex;
