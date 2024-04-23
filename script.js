@@ -1,6 +1,15 @@
 class TicTacToe {
     constructor() {
+        // current move
         this.choice;
+
+        // also store original choices for win counters
+        this.p1choice;
+        this.p2choice;
+
+        this.p1wins = 0;
+        this.p2wins = 0;
+
         this.xBoard = [
             [0,0,0],
             [0,0,0],
@@ -38,15 +47,35 @@ class TicTacToe {
     // main control function
     playTurn(gameTile) {
         if (this.checkWin("x") === true) {
-            alert("x wins!")
+            // alert("x wins!")
+            if (this.p1choice === "x") {
+                this.p1wins++;
+                p1WinCounter.innerText = this.p1wins;
+                console.log(this.p1wins);
+            }
+            else {
+                this.p2wins++;
+                p2WinCounter.innerText = this.p2wins;
+                console.log(this.p2wins);
+            }
+
+            this.clearBoard();
         }
         else if (this.checkWin("o") === true) {
-            alert("o wins!")
-        }
-    }
+            // alert("o wins!")
+            if (this.p1choice === "o") {
+                this.p1wins++;
+                p1WinCounter.innerText = this.p1wins;
+                console.log(this.p1wins);
+            }
+            else {
+                this.p2wins++;
+                p2WinCounter.innerText = this.p2wins;
+                console.log(this.p2wins);
+            }
 
-    newGame() {
-        // code goes here
+            this.clearBoard();
+        }
     }
 
     checkWin(input) {
@@ -129,17 +158,16 @@ class TicTacToe {
                 return;
         }
 
-        this.swapChoice();
+        this.choice = this.swapChoice(this.choice)
         this.updateCurrentChoice();
-
     }
 
-    swapChoice() {
-        if (this.choice === "x") {
-            this.choice = "o"
+    swapChoice(choice) {
+        if (choice === "x") {
+            return "o";
         }
-        else if (this.choice === "o") {
-            this.choice = "x"
+        else if (choice === "o") {
+            return "x";
         }
         else {
             return;
@@ -168,6 +196,7 @@ class TicTacToe {
     choose(piece) {
         this.choice = piece;
         this.p1choice = this.choice;
+        this.p2choice = this.swapChoice(this.choice)
 
         this.updateCurrentChoice();
 
@@ -182,7 +211,9 @@ class TicTacToe {
             }
         }
 
-        currentChoiceTile.removeChild(currentChoiceTile.firstChild);
+        if (currentChoiceTile.firstChild) {
+            currentChoiceTile.removeChild(currentChoiceTile.firstChild);
+        }
 
         // reset boards
         this.xBoard = [
@@ -239,6 +270,8 @@ const newGameBtn = document.querySelector(".new-game-button")
 const gameTiles = document.querySelectorAll(".game-tile");
 const currentChoiceTile = document.querySelector(".game-tile-head");
 
+const p1WinCounter = document.getElementById('p1-win-counter');
+const p2WinCounter = document.getElementById('p2-win-counter');
 
 const xTile = document.createElement("img");
 xTile.src = "img/X.png";
@@ -263,6 +296,5 @@ gameTiles.forEach(gameTile => {
     gameTile.addEventListener('click', () => {
         myGame.placeMove(gameTile);
         myGame.playTurn(gameTile);
-
     })
 });
