@@ -12,6 +12,7 @@ body {
 .control-panel {
     background-color:gray;
     height: 600px;
+    width: 400px;
     margin: 5px;
     /* display: flex; */
 }
@@ -24,17 +25,30 @@ body {
     padding: 5px;
 }
 
-.choose-button {
+.control-panel-row {
     background-color: white;
     margin-bottom: 10px;
     font-size: 20px;
     padding: 5px;
     width: auto;
+
+    height: 150px;
+    /* width: 100%; */
 }
 
-.x-button, .o-button, .p1-choose-button {
-    height: 125px;
-    width: 125px;
+
+.x-button, .o-button {
+    /* height: 125px;
+    width: 125px; */
+    width: 100%;
+}
+
+.win-counter-box {
+
+}
+
+.win-counter {
+
 }
 
 /* game board */
