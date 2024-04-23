@@ -47,22 +47,22 @@ class TicTacToe {
     // main control function
     playTurn(gameTile) {
         if (this.checkWin("x") === true) {
-            // alert("x wins!")
+            alert("x wins!")
             if (this.p1choice === "x") {
                 this.p1wins++;
                 p1WinCounter.innerText = this.p1wins;
-                console.log(this.p1wins);
+                // console.log(this.p1wins);
             }
             else {
                 this.p2wins++;
                 p2WinCounter.innerText = this.p2wins;
-                console.log(this.p2wins);
+                // console.log(this.p2wins);
             }
 
             this.clearBoard();
         }
         else if (this.checkWin("o") === true) {
-            // alert("o wins!")
+            alert("o wins!")
             if (this.p1choice === "o") {
                 this.p1wins++;
                 p1WinCounter.innerText = this.p1wins;
@@ -228,6 +228,8 @@ class TicTacToe {
         ];
     }
 
+
+
     updateMagicSquare(id, selector) {
         const i = this.boardIndices[id]; // translates id to indices of x or oBoard
 
@@ -267,6 +269,7 @@ const chooseBtn = document.querySelector(".choose-button");
 const xBtn = document.querySelector(".x-button");
 const oBtn = document.querySelector(".o-button");
 const newGameBtn = document.querySelector(".new-game-button")
+const clearCountersBtn = document.querySelector(".clear-win-counters");
 const gameTiles = document.querySelectorAll(".game-tile");
 const currentChoiceTile = document.querySelector(".game-tile-head");
 
@@ -291,6 +294,14 @@ oBtn.addEventListener('click', (e) => {
 newGameBtn.addEventListener('click', (e) => {
     myGame.clearBoard();
 });
+
+clearCountersBtn.addEventListener('click', (e) => {
+    myGame.p1wins = 0;
+    myGame.p2wins = 0;
+    p1WinCounter.innerText = myGame.p1wins;
+    p2WinCounter.innerText = myGame.p2wins;
+
+})
 
 gameTiles.forEach(gameTile => {
     gameTile.addEventListener('click', () => {
