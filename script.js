@@ -228,8 +228,6 @@ class TicTacToe {
         ];
     }
 
-
-
     updateMagicSquare(id, selector) {
         const i = this.boardIndices[id]; // translates id to indices of x or oBoard
 
@@ -262,7 +260,6 @@ class TicTacToe {
         }
         console.log("----")
     }
-
 }
 
 const chooseBtn = document.querySelector(".choose-button");
