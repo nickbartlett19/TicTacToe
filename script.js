@@ -197,10 +197,9 @@ class TicTacToe {
         this.choice = piece;
         this.p1choice = this.choice;
         this.p2choice = this.swapChoice(this.choice)
-
+        chooseRow.classList.remove('show')
+        chooseRow.className = 'hide';
         this.updateCurrentChoice();
-
-        // chooseBtn.style.display = "none";
     }
 
     clearBoard() {
@@ -262,7 +261,7 @@ class TicTacToe {
     }
 }
 
-const chooseBtn = document.querySelector(".choose-button");
+const chooseRow = document.querySelector(".choose-row");
 const xBtn = document.querySelector(".x-button");
 const oBtn = document.querySelector(".o-button");
 const newGameBtn = document.querySelector(".new-game-button")
@@ -290,6 +289,8 @@ oBtn.addEventListener('click', (e) => {
 
 newGameBtn.addEventListener('click', (e) => {
     myGame.clearBoard();
+    chooseRow.classList.remove('hide');
+    chooseRow.classList.add('choose-row');
 });
 
 clearCountersBtn.addEventListener('click', (e) => {

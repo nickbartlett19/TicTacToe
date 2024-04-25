@@ -25,7 +25,7 @@ body {
     padding: 5px;
 }
 
-.control-panel-row {
+.control-panel-row, .choose-row {
     background-color: white;
     margin-bottom: 10px;
     font-size: 20px;
@@ -34,6 +34,16 @@ body {
 
     height: 150px;
     /* width: 100%; */
+}
+
+.choose-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choose-row {
+    flex-direction: row;
 }
 
 .choose-starting-piece {
@@ -129,4 +139,12 @@ img {
 
 .game-tile:hover, .x-button:hover, .o-button:hover {
     background-color: gray;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
 }
