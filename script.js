@@ -197,8 +197,7 @@ class TicTacToe {
         this.choice = piece;
         this.p1choice = this.choice;
         this.p2choice = this.swapChoice(this.choice)
-        chooseRow.classList.remove('show')
-        chooseRow.className = 'hide';
+        chooseRow.classList.add('hide');
         this.updateCurrentChoice();
     }
 
@@ -290,7 +289,6 @@ oBtn.addEventListener('click', (e) => {
 newGameBtn.addEventListener('click', (e) => {
     myGame.clearBoard();
     chooseRow.classList.remove('hide');
-    chooseRow.classList.add('choose-row');
 });
 
 clearCountersBtn.addEventListener('click', (e) => {
