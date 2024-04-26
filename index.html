@@ -11,16 +11,16 @@
 
 </head>
 <body>
-    <div class="control-panel">
-        <div class="choose-row">
+    <div class="control-panel border">
+        <div class="control-panel-row choose-row flex flex-row flex-center">
             <div class="choose-starting-piece flex-center flex-grow">Choose Starting Piece: </div>
-            <div class="flex-grow"><div class="x-button flex-center"><img src="img/X.png"></div></div>
-            <div class="flex-grow"><div class="o-button flex-center"><img src="img/O.png"></div></div>
+            <div class="flex-grow"><div class="x-button border flex-center"><img src="img/X.png"></div></div>
+            <div class="flex-grow"><div class="o-button border flex-center"><img src="img/O.png"></div></div>
         </div>
 
         <div class="control-panel-row">
-            <div class="flex-center new-game-button">new game</div>
-            <div class="flex-center clear-win-counters">clear win counters</div>
+            <div class="new-game-button border flex-center">new game</div>
+            <div class="clear-win-counters border flex-center">clear win counters</div>
         </div>
 
         <div class="control-panel-row">
@@ -29,12 +29,12 @@
         </div>
     </div>
 
-    <div class="game-board">
+    <div class="game-board border">
         <div class = "game-board-top flex-center">
             <p>Turn:</p>
-            <div class="game-tile-head"></div>
+            <div class="game-tile-head border flex-center"></div>
         </div>
-        <div class = "tile-grid">
+        <div class = "flex">
             <div class="flex-col">
                 <div class="game-tile" id = "1"></div>
                 <div class="game-tile" id = "2"></div>
